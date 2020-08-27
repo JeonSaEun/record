@@ -1,0 +1,77 @@
+참조타입 - 배열타입, 열거타입, 클래스, 인터페이스
+
+JVM이 사용하는 메모리 영역 - RDA(Runtime Data Area)
+	-메소드 영역
+		*컴파일이 완료된 .class파일의 바이트코드를 그대로 읽어서 저장
+		*클래스 내엔 생성자, 메소드, 필드, 런타임 상수풀
+		*메소드 영역내의 클래스도 객체임. java.lang.Class타입의 Clazz객체로 정의
+		*Clazz객체의 타입은 java.lang.Class !!!
+		*모든 스레드가 공유
+
+	-힙 영역
+		*new 연산자를 통해 생성된 객체/배열 저장
+
+	-스레드
+		*각 스레드마다 할당되는 메모리 영역인 JVM Stack Area(스레드가 실행시킨 메소드의 프레임을 생성하여 저장)
+		*JVM Stack Area에 저장할 수 있는 변수는 한정되어있음.
+		*변수를 더 이상 넣을 수 없는 상태를 Overflow <-> Underflow 값이 없는 상태
+		*Stack의 데이터 관리방식 - LIFO(Last-In First-Out)
+		*메소드를 호출할 때마다 Frame을 생성하고 메소드 시그니쳐 정보를 저장(PUSH), 아래부터 쌓아가는 방식
+		*호출된 메소드안에서 변수가 선언될 때 그 메소드 프레임에 저장
+		*메소드의 호출이 끝나면 프레임은 파괴됨(POP)
+		
+스레드는 각자 자신이 실행할 메소드를 가짐(무작위로 각자 수행)
+메인 스레드 - 호출시킨 메인 메소드를 수행하면 JVM 종료
+
+실행 클래스 - 실행시킬 메인 메소드가 있는 클래스
+라이브러리 클래스 - 메인 메소드 X
+
+메소드 시그니쳐 - public static void main(String[] args) 메소드의 정보(접근제한자, ,,)
+
+ClassLoader가 컴파일된 clazz객체를 Method에 넣기전에 Static Initializer를 단 한번 호출한다.
+
+*클래스의 인스턴스(instance)
+	-클래스의 인스턴스화 : 클래스란 틀에서 객체를 생성하는 과정
+	-클래스의 인스턴스화를 통해, 생성된 객체 => 해당 클래스의 "인스턴스"
+
+*객체(object) == 해당 클래스의 인스턴스
+
+static이 붙지않은 필드를 인스턴스 필드(객체를 생성하기 위한 틀)
+	-생성자 : 인스턴스 필드의 초기화를 위함
+
+static필드(정적필드, 클래스필드) - 객체가 생성되지 않아도 이미 각인된 필드
+
+
+
+* SQL 문장의 종류
+-DQL : Data Query Language
+	>SELECT 문
+
+-DML : Data Manipulation Language
+	>INSERT, UPDATE, DELETE
+
+-DDL : Data Definition Language
+	>CREATE, ALTER
+
+-DCL : Data Control Language
+	>GRANT, REVOKE
+
+-TCL : Transction(TX) Control Language
+	>COMMIT, ROLLBACK, SAVEPOINT
+
+----------------------------------------
+
+DQL 문장을 구성하는 아래의 6가지 절(clause)의 실행 순서
+
+(5) SELECT 	-> 필수
+	> 최종적으로 추출할 컬럼의 목록 선택
+(1) FROM		-> 필수
+	> 데이터의 공급
+(2) WHERE	-> 선택
+	> 조건에 맞는 데이터만 추출(1차 필터링)
+(3) GROUP BY	-> 선택
+	> 특정 기준에 맞게, 데이터를 그룹핑(grouping)
+(4) HAVING	-> 선택
+	> GROUP BY로 생성된 그룹에 대한 2차 필터링
+(6) ORDER BY	-> 선택
+	> 정렬(sort)

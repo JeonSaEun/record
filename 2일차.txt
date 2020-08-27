@@ -1,0 +1,60 @@
+Ms949(CP949) 윈도우 문자
+
+
+JDK tools
+(1) jconsole  (2) jvisualvm    cmd 들어가서 java폴더 들어가 dir ~~~  // 
+jdk 버전까지 접속,  1번보단 2번을 자주사용
+PROCESS ; 현재 실행중인 프로그램 PC의 자원을 할당받아서 사용
+
+
+어떤 언어로 프로그램을 만들든, 이 프로그램을 수행시키는 순간,
+운영체제는 해당 프로세스(실행한 프로그램)에 3개의 자원을 할당함
+(1)표준입력(Standard Input)   -> System.in
+(2)표준출력(Standard Output) -> System.out
+(3)표준에러(Standard Error)   ->System.err
+
+
+*클래스의 필드의 유효범위(****)
+(1) 해당 클래스로부터, 객체를 생성할 때, 필드는 생성되고
+(2) Garbage Collertor 에 의해서, 이 객체가 파괴될 때, 필드도 파괴됨
+
+
+*표현식 
+연사자가 필요로 하는 피연산자의 개수에 따라,
+(1)단항연산자 (2)이항연산자 
+
+
+*형변환(type conversion)
+A타입 --> B타입으로 바꾸는 것을 의미함
+1. 자동형변환(promotion)
+short s = 100;
+int i = s; <-- promotion
+2. 강제형변환(casting)
+int i = 100;
+short s = (short) i;
+
+
+* 표현식의 전체사항
+표현식의 연산이 수행가능하려면, 아래의 조건을 만족해야 함
+  (피연산자1) 연산자 (피연산자2)
+   short        +     int         ->>방향은 큰타입으로 맞춘다
+    int         +     int 
+
+
+증감연산자 : ++, --
+(1) 전위
+(2) 후위
+
+	int i = 100;
+	++i // 전위
+	i++ // 후위
+
+	int j = ++i; //전위 (먼저 증가 후 값을 반환)
+	int j = i++; //후위 (값을 먼저 반환 후 증가)
+
+i++;
+++i; //단항연산자라서 동일(값을 줄 대상이 X)
+
+
+Oracle Database 12c Release 2 설치
+

@@ -1,0 +1,58 @@
+* 예외 (Exception)
+	-사용자의 잘못된 조작, 개발자의 잘못된 코딩으로 인한 오류
+	-예외 처리를 추가 시 정상 실행 상태 가능
+		·Checked Exception
+			-예외 처리 코드가 없으면 컴파일 오류
+		·Runtime Exception
+		(NullPointer, ArrayIndexOutOfBounds, ClassCast...)
+			-예외 처리 코드를 생략하더라도 컴파일 가능
+ 
+* 예외 처리 (발생한 오류를 내맘대로 처리)
+	-try-catch-finally
+		-finally => optional, 무조건 실행 블록
+		-단, finally블록 존재 시 catch => optional
+
+	try {
+			Class clazz = Class.forName("java.lang.String2");
+			
+		} catch(ClassNotFoundException e) {
+			System.out.println("클래스가 존재하지 않습니다.");
+		}
+
+	· 멀티캐치 (처리할 로직이 같을 때) 
+		catch(NumberFormatException | NullPointerException e)
+
+	· 다중캐치 (처리할 로직이 다를 때)
+		catch(NumberFormatException e) {
+			;;		// 다중 catch
+		} catch( NullPointerException e) {
+			;;		// 다중 catch
+		}
+
+	-e.getMessage() => For input string: "a100"
+	-e.printStackTrace() => 예외메세지 전체 출력
+
+* instanceof (오른쪽에 있는 객체가 맞는지 판단)
+		·변수이름 instanceof 참조타입 이름(클래스,인터페이스,배열,열거)
+		-if(e instanceof NumberFormatException) => 맞으면 TRUE 반환
+
+* 개발자가 직접 예외를 발생시키는 문법
+	throw new NumberFormatException("Wow");
+	System.out.println(e.getMessage()); => Wow
+
+* try-with-resources (단독 사용 가능)
+	자원 객체를 다 사용했으면 자동으로 닫아줌
+	try (Scanner scan = new Scanner(System.in);) {
+		;;
+	}
+
+* jar 파일이란?
+	-자바 언어로 만든 압축/해체 프로그램
+	-JDK의 bin 폴더안에 들어있는 명령어
+	-XXX.jar파일이 있다면, 아래와 같이 관리
+		1) xxx.jar파일의 내용 보기
+			C:\temp> jar tvf xxx.jar
+		2) xxx.jar파일의 해체(압축 풀기)
+			C:\temp> jar xvf xxx.jar
+		3) xxx.jar파일의 생성(압축 생성)
+			C:\temp> jar cvf xxx.jar 파일1 파일2 디렉토리1 디렉토리2
