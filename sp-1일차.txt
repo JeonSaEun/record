@@ -1,0 +1,114 @@
+*** Spring Framework 설정
+
+STS란? -> Spring Tool Suite
+
+http://spring.io -> Spring Tools 4 깔고 설치
+sts4.7.2 폴더생성댐
+lombok -> specity location -> SpringToolSuite 설치
+SpringToolSuite4.ini 서브라임텍스트 -> -Xmx1024m,
+openFile
+*** -vm
+C:\app\Java\jdk1.8.0_261\bin *** 설정해주기
+-vmargs
+저장후 SpringToolSuite4 실행 -> Browse - C:\app\eclipse\workspace\sts 폴더 생성해서 지정하기
+
+스프링 들어가서 메뉴에 Help -> Eclipse Marketplace -> Popular -> Spring Tools 3 Add-On for Spring Tools 4 설치후 리스타트
+
+window - Preferences - General - Workspace UTP-8 설정
+이어서 Web - CSS File,HTML,JSP UTP-8 설정
+
+---------------
+Eclipse (기본버전도)Enterprise - Marketplace - 스프링4,3받고 UTP-8 설정 -Perspective view에서 Spring
+
+WAS 종류: Apache Tomcat 7,8,9
+
+http://tomcat.apache.org/ -> 8.5랑 9다운
+Host Manager, Examples 체크하고 설치
+셧다운포트 - 8008, 커넥터포트 8800 아이디비번 tomcat8 -9버전은 9 - 9009,9900
+설치폴더 넘어가고 Destination Folder - C:\app\WAS\Tomcat 8.5 로 고침
+
+http://hostname:8800/
+* hostname 에 올수있는 값
+	: C:\> hostname 명령어의 출력값
+	: localhost
+	: 127.0.0.1
+	: 192.168.X.X (C:\)
+
+* WAS에 등록되어 서비스중인 각각의 웹 어플리케이션마다 자기의 경로를 갖고 있음. 이 경로를 해당 웹 어플리케이션의 "Context Path"라고 부른다.
+
+* 포트번호의 범위: 0 ~ 65535
+
+* 서버네임 Tomcat v9.0 파일경로 C:\app\WAS\Tomcat 9.0 JRE환경 Java8
+
+서버- 톰캣 더블클릭 server locations 2번째
+options 2번째 
+
+Spring Legacy Project - Spring MVC Project 선택
+Project name : ex01
+Package name : org.zerock.myapp (Group ID + Artifact ID)
+
+* Web Application 설정파일
+	-web.xml / app.Servlet / root-context.xml / Servlet-context.xml
+
+ex01 마우스오른쪽 - Properties
+	- Resource -> 언어설정(UTP-8)
+	- Server -> 9.0선택
+	- Targeted Runtimes -> 9.0
+
+** ex01 / pom.xml
+	<properties>
+		<java-version>1.8</java-version>
+		<java-home>${env.JAVA_HOME}</java-home>
+		
+		<org.springframework-version>5.2.8.RELEASE</org.springframework-version>
+		
+		<org.aspectj-version>1.9.6</org.aspectj-version>
+	
+		<org.slf4j-version>1.7.30</org.slf4j-version>
+
+	 <build>
+        <plugins>
+           
+            <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<downloadJavadocs>false</downloadJavadocs>
+
+
+			<plugin>
+                <groupId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+
+                <configuration>
+                    <verbose>true</verbose>
+                    <fork>true</fork>
+                    
+                    <meminitial>128m</meminitial>
+                    <maxmem>256m</maxmem>
+                    
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                    
+                    <executable>${java-home}/bin/javac</executable>
+                    <compilerArgs>
+                    	<arg>-verbose</arg>
+                    	<arg>-Xlint:all</arg>
+                    	</compilerArgs>
+                    	
+                    	<showWarnings>true</showWarnings>
+                    	<showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+
+    <dependencies>
+
+    	<!-- Logging -->에서 4번째
+    	<dependency>
+    		<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>compile</scope>
