@@ -1,0 +1,77 @@
+* 익명 자식 구현 객체
+	따로 클래스, 인터페이스를 작성하지 않고 한번에 작성
+	System.setSecurityManager(new SecurityManager() {
+
+			@Override
+			public void checkExit(int status) {
+			} // checkExit
+			
+		});	
+
+* finalize (소멸자)
+
+* Math.pow(10, 3) - 10의 3승
+
+* System.currentTimeMillis(); 	-> 1/1000초
+* System.nanoTime();			-> 1/1000000000초
+* System.getenv("JAVA_HOME");	-> 환경변수읽기
+
+* Clazz 객체 얻기
+	(1)	클래스이름.class
+	(2)	참조변수.getClass()
+	(3)	Class.forName()
+
+* Beans class: 
+필드의 값마다 getter/setter가 필요하고, default생성자(매개변수가 없는)있어야함(다른 생성자가 있어도 되지만 default constructor는 필수)
+Bean은 POJO(Plain Old Java Object 아주평볌한 클래스)이다.
+
+* 문자열(String)의 인코딩(encoding)과 디코딩(decoding)
+	(1) 인코딩: String	-> byte[]
+	(2) 디코딩: byte[]	-> String
+	(3) 문자집합(CharacterSet): 모든 언어의 조합 가능한 문자 하나마다 부여한 정수값 모음
+		byte[] bytes = new byte[50];
+		int nbytes = System.in.read(bytes);
+		log.info(Arrays.toString(bytes));	// 인코딩
+
+		String name = new String(bytes, "MS949");
+		log.info(name);						// 디코딩
+
+		* 문자집합이 MS949(윈도우 OS)라면
+			(1) 영문/숫자	> 1byte
+			(2) 한글			> 2bytes
+
+		* 문자집합이 UTF-8(다국어문자집합)이라면
+			(1) 영문/숫자	> 1byte
+			(2) 한글			> 3bytes
+
+		-인코딩,디코딩시 사용될 문자집합은 같아야 함
+
+* StringBuffer, StringBuilder
+	- 멀티 스레드: StringBuffer
+	- 단일 스레드: StringBuilder
+	sb.replace(6, 13, "Book");		// (6, 13] half-open: 6은 포함, 13은 미포함
+	sb.delete(4, 5);
+
+
+// Method Chaining을 통한 SQL 문자열 생성
+String sql =
+		new StringBuffer().
+		append("SELECT ").
+		append("	employee_id, ").
+		append("	first_name, ").
+		append("	last_name, ").
+		append("	email, ").
+		append("	phone_number, ").
+		append("	hire_date ").
+		append("FROM ").
+		append("	employees ").
+		append("WHERE ").
+		append("	employee_id BETWEEN ? AND ? ").
+		toString();
+
+* Oracle
+	% : 0개 이상의 문자와 대체
+	_ : _위치에 반드시 1개 문자와 대체
+
+* WHERE
+    last_name LIKE '%$_%' ESCAPE '$';	-> $뒤의 한 문자만 일반문자로 인식

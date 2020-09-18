@@ -1,0 +1,55 @@
+* JDBC driver를 이용한 데이터베이스 프로그램 할 때 핵심이 되는 클래스와 인터페이스
+	(0) java.sql.DriverManager	(Class)
+	(1) java.sql.Connection 	(interface)
+	(2) java.sql.Statement 		(interface)		-> Dynamic SQL(성능하락)
+	(3) java.sql.PreparedStatement (interface) 	-> Prepared SQL
+	(4) java.sql.ResultSet 		(interface)
+	(5) java.sql.SQLException	(class) - Checked Exception
+
+	Cloud Computing = Grid Computing + Utility Computing
+	(격자, 여러개의 데이터베이스가 모여 하나처럼 동작) / (종량제, 쓴만큼 돈을 내는 방식)
+
+
+** resources / log4j.xml
+ 	<param name="ConversionPattern" value="%d [%t] %-5p %c{1}:%L - %m%n" />
+
+* JDBC Driver를 사용하려면, 우선 연결하고자 하는 데이터베이스에 대한
+  2가지 정보를 확보 : jdbcURL, jdbcDriver 우선 알아야 합니다.
+	String jdbcURL = "jdbc:oracle:thin:@PDB";
+	static String user = "HR";
+	static String pw = "oracle";
+	
+	public static void main(String[] args) {
+    	try(Connection cn =
+    		DriverManager.getConnection(jdbcURL, user, pw);) {
+    			String sql = "SELECT * FROM Employees WHERE salary > ?";
+
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				
+				stmt.setDouble(1, 3000.0);
+
+    		}
+
+	
+
+	// step-3. 실행시킬 SQL 문장객체를 생성
+
+	// step-4. 3에서 생성한 SQL 문장(PreparedStatement) 실행
+    ResultSet rs = pstmt.executeQuery();
+
+    // step-5. DQL 문장의 실행결과인 레코드 추출(from ResultSet)
+    	while(rs.next()) {
+    		int empId = rs.getInt("EMPLOYEE_ID");
+    		String format = "%d, %s, %s, %s, %f";
+    		log.info(String.format(format,
+    				empId,firstName,lastName,email,salary));
+    	}
+
+	// step-99
+	conn.close();
+	}
+* Oracle Instance = Oracle Background Processes + SGA (System Global Area)
+
+* 오라클 최소 구성 = Oracle Instance + Oracle Listener
+
+
