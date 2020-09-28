@@ -1,0 +1,59 @@
+* 제네릭
+	- 컴파일 단계에서 잘못된 타입이 사용될 수 있는 문제를 제거 가능
+	- 참조 타입을 파라미터로 가지는 클래스와 인터페이스<구체타입 지정>
+	- <>연산자: 타입추론 연산자
+		==> 구체타입의 생략이 불가능한 때:
+			"익명구현객체코딩, 익명자식객체코딩"시에는 RValue의 구체타입 생략 불가
+
+* 제네릭 메소드
+	- public <T>① Box<T>② boxing(T③ t) {...}
+	- ①번이 단독으로 쓰이는 구체타입 -> ②, ③번은 호출됨
+
+@Accessors(fluent=true)
+	-접근자
+@RunWith(SpringRunner.class)
+	-JUnit 프레임워크의 테스트 실행
+@ContextConfiguration(locations = {"file:src/.../root-context.xml", ...}) 	// XML 기반
+@ContextConfiguration(classes = {RootConfig.class, ServletConfig.class})	// Java 기반
+	-스프링의 설정파일을 지정
+	-Root, Servlet의 Beans Graph를 확인해서 추가 결정
+
+* 메소드 체이닝(Method Chaining)
+	- A a = new A();
+	- a.method1().method2().method3();
+
+* 정적멤버(static)는 클래스명.메소드();
+
+* RootConfig
+@Configuration
+* WebConfig
+extends AbstractAnnotationConfigDispatcherServletInitializer
+RootConfig
+ServletConfig
+ServletMapping
+
+* 의존성 주입 방법: @Setter(onMethod_ = @Autowired), 생성자
+
+* AOP(Aspect-oriented programming):
+	 횡단 관심사(cross-concern)의 분리를 허용함으로써 모듈성을 증가
+
+* Objects.requireNonNull(hotel);
+  assertNotNull(hotel);			=> Null이 아닌지 검사
+
+* import static FQCN<메소드명>;
+
+* pom.xml에 등록
+ (1) spring-jdbc
+ (2) spring-tx
+ (3) HikariCP
+ (4) tomcat-jdbc
+ (5) mybatis
+ (6) mybatis-spring
+
+* root-context.xml 수정
+ <property name="jdbcUrl" value="jdbc:oracle:thin:@IP:PORT/DBNAME" /> => isConnect
+ <property name="jdbcUrl" value="jdbc:oracle:thin:@PDB" />	=> TNSalias
+
+ * 	c01/src/test/java
+ 	com.zerock.myapp.persistence (영속성)
+
