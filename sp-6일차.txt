@@ -1,0 +1,13 @@
+* 오라클 SQL 단일행 함수
+- 행이 10개이면, 출력 결과도 10개 (동일)
+	:instr('MILLER', 'L', [찾을 위치, 몇번째 숫자를 찾을지])
+	-> 일치하는게 없다면 0 반환
+	:substr('900303-1234567', [찾을 위치, 리턴할 문자열의 갯수])
+
+* spring MVC
+	@ComponentScan(basePackages = { "com.zerock.myapp" })
+	::: RootConfig, Servlet 에서만 작동 (Web, DirectWebMvc X)
+
+* Beans Class 란?
+default 생성자와 각 필드마다 getter,setter 메소드 필요 (POJO)
+

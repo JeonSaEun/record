@@ -1,0 +1,30 @@
+* 스레드 객체 생성 방법
+	(1) Runable interface 구현 class 작성
+		Thread t = new Thread(객체)
+	(2) Thread class 상속, Run() overriding
+	(3) 익명자식구현객체 (1. Thread 상속 2. interface 상속)
+	(4) 익명함수 -> 람다식 이용
+
+* 스레드의 일시 정지 상태
+	(1)	BLOCKED
+	(2) WAITING
+	(3) TIMED_WAITING
+
+* @EnableWebMvc
+WebMvcConfigurer, InitializingBean, DisposableBean
+
+*** 자바설정기반(첫번째 유형)의 스프링 MVC project 설정순서 *
+(1) pom.xml
+(2) log4j.xml
+(3) Maven Project Update
+(4) Project 설정 C:\app\oracle\sqldeveloper19\jdbc\lib -> ojdbc8.jar
+(5) web, root-context, servlet-context.xml 삭제
+(6) web.xml 삭제로 인한 오류해결을 위해,
+	pom.xml 에 maven war-plugin 추가
+(7) 자바설정파일 저장 패키지 생성(~~.config)
+(8) 자바설정 패키지 내에 아래 파일 생성
+	WebConfig.java
+	RootConfig.java
+	ServletConfig.java
+(9) 각 설정 클래스별 상세설정 구성
+(10) 설정완료 후, Run on Server로 확인
