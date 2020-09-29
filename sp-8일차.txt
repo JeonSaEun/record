@@ -1,0 +1,33 @@
+* 제네릭 - 제한된 타입 파라미터
+	public <T extends 상위타입> 리턴타입 메소드(매개변수, ...) {...}
+ex) public static <T extends Number> int compare(T t1, T t2) {...}
+	- 클래스, 인터페이스 상속 가능
+	- 구체타입을 제약(Bounded)할 때(Number->int, double, long...이 가능)
+
+* 와일드카드 타입(?) : All
+	- <?> : 제한X (Unbounded)
+	- <? extends 상위타입> : 상위타입에서->하위타입
+	- <? super 하위타입> : 하위타입에서->상위타입
+
+* 대용량 데이터를 HW자원을 이용해 병렬로 이용, 최대한 고속으로 처리
+(1) Generic -> (2) JCF (Java Collection Framework) -> (3) Lambda Expression
+(4) Multi-Thread (ForkJoinPool -> Thread Pool)
+
+*** STREAMS API ***
+	-람다식	-> 결과물: 익명함수
+			-> 사용처: 데이터가공
+
+* 람다식
+	-추상메소드가 단 1개만 선언된 인터페이스 (상수, default, static 메소드가 있어도)
+	=> functional interface
+	-타겟타입(Target Type)
+	=> 람다식으로 구현할 functional interface
+	- (타입 매개변수, ...) -> {실행문; ...}
+	(1) 타입 생략가능
+	(2) 매개변수가 1개일 시, (괄호) 생략
+	(3) 실행문이 1개일 시, {중괄호} 생략
+	(4) 매개변수 X, (괄호) 필수
+	(5) 리턴값이 있을 경우, return문 사용
+	(6) {중괄호}에 return문만 있을 시, return 생략
+
+* 
