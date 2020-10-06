@@ -1,0 +1,10 @@
+* MyBatis를 통한 SQL 처리 위임 두번째 방식(정석)
+	(1) MyBatis 설정파일이 필요 - mybatis doctype configuration
+		가. 이름: mybatis-config.xml (관례상)
+		나. 위치: src/main/resources/ 폴더 밑에 두면 됨(관례상)
+
+	(2) root-context.xml 빈설정중에,
+	"sqlSessionFactory" 빈설정에, MyBatis 설정 2가지를 추가
+		가. MyBatis Framework 설정파일의 위치를 설정(알려줘야 함)
+		나. XML Mapper 파일들의 위치를 지정(알려줘야 함)
+

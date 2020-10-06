@@ -1,0 +1,29 @@
+* 우리가 선언한 인터페이스의 추상메소드를 구현하는 방법
+	(1) public class TTT implements MyFunctionalInterface {
+		@Override
+		public void method() { ... }
+		}
+		
+	(2) 익명구현객체 코딩 기법 적용
+		MyFunctionalInterface fi =
+			new MyFunctionalInterface() {
+				@Override
+				public void method() {...}
+			}; <!-- 익명구현객체 생성 -->
+
+	(3) Lambda Expression 적용
+		MyFunctionalInterface fi;
+		fi = () -> {
+			String str = "method call1";
+			log.info(str)
+			};
+
+* MyBatis Framework를 통한 SQL 처리방법 2가지
+	(1) Mapper Interface + Annotation
+	(2) SQL Mapper XML 파일
+		- 특수한 기능 제공: 
+		1. XML 파일을 저장할 폴더구조 == Mapper Interface의 패키지 구조와 동일하게 맞춤
+		2. XML 파일의 이름 == Mapper Interface의 이름과 동일하게 맞춤
+		==> 자동으로 Mapper Interface의 구현객체(Mapper Proxy객체)를 만들어준다
+
+* 
