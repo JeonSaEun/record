@@ -1,0 +1,88 @@
+* 배열[] : 타입과, 크기가 고정됨
+
+* 컬렉션 프레임워크(java.util)
+ - 컬렉션 : 객체를 수집해 저장
+ - 배열 내의 객체를 삭제 시 해당 인덱스가 빈 상태가 되는 문제
+ ***Collection
+	*List (index기반, 순서 유지 O, 중복저장 O)
+	- ArrayList
+		: 초기용량: 10
+		: 저장용량 초과시 자동으로 늘어남, 고정 가능
+	- Vector
+		: 스레드 동기화(synchronization)
+		: Thread-safe한 환경
+	- LinkedList
+		: 포인터로 체인처럼 관리(인덱스 기반 X)
+		: 객체를 제거하거나 추가하면 바로 앞뒤 링크만 변경
+	*Set (like 구슬주머니. 순서 유지 X 중복저장 X)
+	- HashSet
+	- LinkedHashSet
+	- TreeSet
+
+---별개 인터페이스
+	*Map (key=value 쌍으로 데이터 저장, key는 중복저장 X)
+	- HashMap
+	- Hashtable (==Vector)
+	- LinkedHashMap
+	- TreeMap
+	- Properties (설정)
+		: key,value = String Type으로 고정
+		: ascii 문자셋으로 저장, 한글은 unicode(int)
+
+
+-----------
+
+XML , JAVA 설정기반 - Pom.xml
+spring-test, spring-jdbc, spring-tx, lombok, tomcat-jdbc, mybatis, mybatis-spring, log4jdbc-log4j2-jdbc4.1
+
+*** JAVA pom.xml (web.xml 삭제시)
+	<plugin>
+            <!-- maven-war-plugin -->
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-war-plugin</artifactId>
+			    <version>3.3.1</version>
+			    
+			    <configuration>
+			    	<failOnMissingWebXml>false</failOnMissingWebXml>
+			    </configuration>
+			</plugin>
+
+
+*** web.xml 마지막에 추가
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping
+
+
+*** JAVA based
+webconfig
+	- extends AbstractAnnotationConfigDispatcherServletInitializer
+	log.info(">>> getRootConfigClasses() invoked.");
+	return new Class[] { RootConfig.class };
+	return new String[] { "/" };
+
+	- getServletFilters
+	- customizeRegistration
+
+rootconfig
+	
+servletconfig
+	-@EnableWebMvc
+	-@ComponentScan(basePackages= {"com.zerock.myapp"})
+	- implements WebMvcConfigurer
+		configureDefaultServletHandling
+		addResourceHandlers
+		configureViewResolvers
+	

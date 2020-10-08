@@ -1,0 +1,13 @@
+* Locking Mechanism -> Mutex
+
+* URL, URI
+	(1) URL = Uniform Resource Locator	(http://www.naver.com:80)
+	(2) URI = Uniform Resource Indicator(/index.html)
+
+
+Test class-> 생성자를 통한 주입은 안됨
+(JUnit test class는 default 생성자를 가져야하기 때문)
+
+WHERE salary > ?; ---> Prepared SQL			(interface)
+SELECT sysdate FROM dual; ---> Dynamic SQL 	(.xml)
+
