@@ -1,0 +1,16 @@
+* Stream 종류
+(1) Byte-based stream
+(2) Text-based strean
+
+
+***	Spring MVC의 Controller에서 View를 거치지 않고,
+	브라우저에 순수한 데이터(JSON 문자열)를 보내고자 할 때
+
+	(1) jackson-databind 라이브러리를 pom.xml에 dependency 추가
+	(2) Controller 메소드에 @ResponseBody 어노테이션 추가
+	(3) Controller 메소드의 return type이, 객체(참조)타입 이어야 함
+	::: 브라우저로 JSON 문자열 전송이 가능해짐
+	::: @ResponseBody 어노테이션의 역할: 컨트롤러 메소드가 리턴한 객체를 Response 메시지의 Body(Payload)에 넣어서 보냄
+
+
+* JSON --> JavaScript Object Notation

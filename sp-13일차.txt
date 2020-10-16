@@ -1,0 +1,49 @@
+* Stack 클래스
+- LIFO 구조 (JVM 스택 메모리)
+- push	: 스택에 넣음
+- peek	: 주어진 데이터를 가져옴(보기)
+- pop	: 데이터 파괴
+	*** Stack의 index는 1부터 시작! ***
+
+* Queue
+- FIFO 구조 (파이프) Linked List 구현 클래스
+- offer	: 데이터 넣기
+- peek	: 데이터를 가져옴(보기)
+- poll	: 데이터 파괴
+	*** index는 1부터 시작 ***
+
+* 동기화(Synchronized) 컬렉션의 단점
+- 하나의 스레드가 요소 처리 할 때 전체 잠금 발생
+	: 다른 스레드는 대기 상태
+	: 멀티 스레드가 병렬적으로 컬렉션의 요소들을 빠르게 처리
+
+	* ConcurrentHashMap
+	: 부분(segment) 잠금 사용
+
+	* ConcurrentLinkedQueue
+	: 락 프리(lock-free) 알고리즘 구현(잠금 사용X)
+
+*** Mapping : 상속관계가 없는 상태에서 A->B 타입 변경
+
+* BaseStream >>>
+- Stream, IntStream, LongStream, DoubleStream
+
+*** forEach (최종처리 메소드) 한번만 사용가능, 람다식으로 제공
+	stream.forEach(log::info); // 메소드참조
+
+
+* @RequestMapping -> Controller 생성시, 가장 중요한 Annotation
+(1) 최종사용자가 요구한 URL대로, 요청을 처리할 컨트롤러 클래스의 호출메소드를 결정
+(2) 최종사용자가 요구한 URL과 더불어, 요청방식(Request Method)에 따라 컨트롤러 클래스의 호출메소드를 결정
+
+* 뷰의 이름의 결정
+(1) prefix + ? + suffix
+(2) /WEB-INF/views/ + home1 + .jsp
+	/WEB-INF/views/home2.jsp
+
+* @Controller 어노테이션을 가지는 Controller Class 역할 3가지
+(1) 요청을 받아서, 비지니스 로직을 처리하고
+(2) 처리결과를 Model에 저장시키고
+(3) ViewResolver가 찾을 응답화면을 생성할 뷰의 이름을 반환
+
+* HTML5 = HTML + CSS + JavaScript

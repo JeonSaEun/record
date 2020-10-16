@@ -22,7 +22,7 @@
 ---별개 인터페이스
 	*Map (key=value 쌍으로 데이터 저장, key는 중복저장 X)
 	- HashMap
-	- Hashtable (==Vector)
+	- Hashtable (==Vector, Thread-safe)
 	- LinkedHashMap
 	- TreeMap
 	- Properties (설정)
