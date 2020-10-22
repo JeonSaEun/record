@@ -1,0 +1,39 @@
+* OutputStream os = new FileOutputStream("파일경로");
+byte[] data = "ABC".getBytes("UTF-8");
+os.write(data);
+os.flush();
+os.close();
+
+
+* 바이트 기반/문자 기반 입/출력 스트림에 정의된 read/write 메소드
+=> 	모두 기본성질이 blocking method
+=> 	실제 입/출력이 발생할 수 있는 조건이 충족되기 전까지, 스레드 실행흐름 중지
+	(강제로 끊기 전까지는, 영원히 중지됨)
+
+* Blocking I.O
+(1) read()	- 아예 NO입력 / NO Enter
+(2) write()	- 출력 Buffer Full
+
+* 메소드 호출 방법
+(1) Call by Value
+(2) Call by Reference(참조)
+(3) Call by Pointer => C언어
+
+
+* visual source code 확장 어플리케이션
+- open in browser, live server, oracle developer tool for vsCode, xml tools, xml, material icon theme, korean language pack, HTML snippets, HTML boilerplate
+
+* 추가 확장기능
+(1) 문장을 자동 Lorem Whatever
+(2) 이미지를 자동 Lorem Picsum photos snippets
+
+
+* HTML 필수 브라우저
+(1) MS Edge			***
+(2) Mozilla Firefox
+(3) Google Chrome	***
+(4) Opera
+(5) Apple Safari	***
+(6) Maxthon(해외)
+
+

@@ -1,0 +1,60 @@
+* 객체의 직렬화(Serialization) :
+	자바의 객체 -> 바이트열로 바꾸는 작업
+	- 메소드: writeObject(객체)
+
+* 객체의 역직렬화(De-Serialization) :
+	바이트열 -> 원래의 자바객체로 환원
+	- 메소드: Object readObject()
+	!!원래의 객체로 다시 강제형변환 필요!!
+
+*** 객체의 (역)직렬화가 가능하려면?
+	이 객체를 찍어낸 클래스가 Serializable Tag Interface 구현필요.
+
+
+* transient Keyword : 객체의 (역)직렬화에서 제외하라
+
+* 객체의 직렬화 <-> 역직렬화 상호 작업에서 사용되었단,
+XXX.class 파일의의 serialVersionUID 값은 같아야 함
+
+* serialVersionUID : XXX.java 파일을 컴파일 할 때 마다 자바 컴파일러가 무작위로 생성한 long타입의 정수값을 가지고, 이 버전값이 XXX.class의 버전이다
+
+* JDBC Driver Spy의 적용조건
+(1) POM.xml에 log4jdbc-log4j2-jdbc4.1 dependency 설정 필요
+(2) src/main/resources
+	src/test/resources
+	log4jdbc.log4j2.properties 파일 생성
+(3) log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
+(4) root-context.xml 에서, DataSource 설정 변경
+	1. Driver Class 이름 변경
+		net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+	2. JDBC URL 변경
+	jdbc:log4jdbc:oracle:thin:@DB202009161613_high?TNS_ADMIN=C:/app/oracle/Wallet_DB202009161613/
+(5) 아래 위치의 기존 설정파일 수정
+	src/main/resources/log4j.xml
+	src/test/resources/log4j.xml
+
+	<!-- log4jdbc.log4j2 -->
+	<logger name="jdbc.sqlonly">
+		<level value="info" />
+	</logger>
+	
+	<logger name="jdbc.sqltiming">
+		<level value="info" />
+	</logger>
+	
+	<logger name="jdbc.audit">
+		<level value="info(warn)" />
+	</logger>
+	
+	<logger name="jdbc.resultset">
+		<level value="info(warn)" />
+	</logger>
+	
+	<logger name="jdbc.resultsettable">
+		<level value="info" />
+	</logger>
+(6) Data Source 연결 재수행
+(7) Mapper Test 재수행
+	console 창에 출력되는 Driver Spy Log!
+
+* 

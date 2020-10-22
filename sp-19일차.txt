@@ -1,0 +1,51 @@
+* Database의 트랜잭션 관리 *
+(1) Connection을 얻고 나면, 이 Connection의 commit mode가 정해짐
+(2) Database마다 차이가 있지만 "Auto Commit" 자동설정 되있음
+(3) Auto Commit mode란 ?
+	: 각각의 SQL문장(DML)수행 시, 결과를 영구적으로 DB에 저장하라(자동 commit)
+(4) 개발자는 Connection 객체를 얻고 나면, commit mode 변경 가능.
+	: conn.AutoCommit(boolean) 으로 변경
+
+*** Spring 4.3 above : 
+	Automatic Injection due to 1 field and constructor with  1 argument.
+	클래스 필드가 1개이고, 매개변수가 1개라면, spring bean container가 자동주입
+	=> 이를 위해서 @AllArgsConstructor(access=lombok.AccessLevel.PUBLIC)
+
+* Spring의 scan 태그에 의해 자동으로 Bean Container의 bean객체로 생성.등록하는 annotation
+	(1) @Controller
+	(2) @Service
+	(3) @Configuration
+	(4) @Bean
+	(5) Component
+
+
+* URL(Uniform Resource Locator)
+: http://www.~
+
+* URI(Uniform Resource Identifier)
+: / ~  => ?부터 Query String => Request Parameter
+
+* Controller
+@Controller
+@RequestMapping("base URI") -> ~.com/"base URI 자리 !!"
+@AllArgsConstructor
+
+@RequestMapping(
+	path = "ooo"	-> /base URI/"ooo"
+	method = {
+		RequestMethod.GET,	-> HEADER에 포함
+		RequestMethod.POST})-> BODY에 포함
+
+* 전달되는 파라미터 이름과 전달받을 파라미터 이름이 다를 때
+public String VERY (
+	@RequestParam("전달되는 값 이름") type 전달받을 값 이름) {
+	return "XXX" -> XXX.jsp
+	}
+
+* 전달파라미터 수집용 클래스를 DTO라고 함
+: DTO(Data Transfer Object) -> Data: 사용자가 보낸 전달파라미터
+
+* DTO를 사용하면
+public String VERY (
+	DTO dto,
+	Model model)	-> Front Controller 생성 및 제공
