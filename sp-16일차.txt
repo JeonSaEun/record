@@ -21,7 +21,7 @@ os.close();
 
 
 * visual source code 확장 어플리케이션
-- open in browser, live server, oracle developer tool for vsCode, xml tools, xml, material icon theme, korean language pack, HTML snippets, HTML boilerplate
+- open in browser, live server, oracle developer tool for vsCode, xml tools, xml, material icon theme, korean language pack, HTML snippets, HTML boilerplate, css peek, css preview, css-triggers, preview on web server,image preview
 
 * 추가 확장기능
 (1) 문장을 자동 Lorem Whatever
