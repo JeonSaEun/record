@@ -43,13 +43,19 @@ ServletMapping
 * import static FQCN<메소드명>;
 
 * pom.xml에 등록
- (1) spring-jdbc
- (2) spring-tx
- (3) HikariCP
- (4) tomcat-jdbc
- (5) mybatis
- (6) mybatis-spring
-
+1. spring-test
+2. spring-jdbc
+3. spring-tx
+4. slf4j-api
+6. slf4j-log4j12
+5. jcl-over-slf4j
+6. lombok
+7. HikariCP
+8. tomcat-jdbc
+9. mybatis
+10. mybatis-spring
+11. log4jdbc-log4j2-jdbc4.1
+ 
 * root-context.xml 수정
  <property name="jdbcUrl" value="jdbc:oracle:thin:@IP:PORT/DBNAME" /> => isConnect
  <property name="jdbcUrl" value="jdbc:oracle:thin:@PDB" />	=> TNSalias
